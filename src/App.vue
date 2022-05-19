@@ -1,19 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <home-page>
+      <button
+        v-for="merdacciaSecca in muoriPezzoDiMerda"
+        :key="merdacciaSecca"
+        @click="cambiaRegione(merdacciaSecca)"
+      >
+        {{ merdacciaSecca }}
+      </button>
+      <h3>{{ regione }}</h3>
+      <pokemon-list @mostraPokemon="mostraPokemon" :regione="regione" />
+      <pokemon-details :id="5" />
+    </home-page>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+//import ComponenteEsempio from "./ComponenteEsempio.vue";
+import PokemonDetails from "./containers/PokemonDetails.vue";
+import PokemonList from "./containers/PokemonList.vue";
+import HomePage from "./pages/HomePage.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    HomePage,
+    PokemonList,
+    PokemonDetails,
+  },
+  data: () => ({
+    regione: "kanto",
+    muoriPezzoDiMerda: ["kanto", "johto", "hoenn", "culonia"],
+  }),
+  methods: {
+    cambiaRegione: function (nuovaRegione) {
+      this.regione = nuovaRegione;
+    },
+  },
+};
 </script>
 
 <style>
@@ -21,7 +45,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
   margin-top: 60px;
 }
