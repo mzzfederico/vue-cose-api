@@ -11,12 +11,14 @@
       <h3>{{ regione }}</h3>
       <pokemon-list @mostraPokemon="mostraPokemon" :regione="regione" />
       <pokemon-details :id="5" />
+
+      <componente-esempio razza="bassotto" colore="rosso" :volume="10" />
     </home-page>
   </div>
 </template>
 
 <script>
-//import ComponenteEsempio from "./ComponenteEsempio.vue";
+import ComponenteEsempio from "./ComponenteEsempio.vue";
 import PokemonDetails from "./containers/PokemonDetails.vue";
 import PokemonList from "./containers/PokemonList.vue";
 import HomePage from "./pages/HomePage.vue";
@@ -27,6 +29,7 @@ export default {
     HomePage,
     PokemonList,
     PokemonDetails,
+    ComponenteEsempio,
   },
   data: () => ({
     regione: "kanto",
