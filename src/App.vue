@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <home-page>
+      {{ regioneMaiuscolo }} {{ regioneInvertito }}
       <button
         v-for="merdacciaSecca in muoriPezzoDiMerda"
         :key="merdacciaSecca"
@@ -32,9 +33,23 @@ export default {
     ComponenteEsempio,
   },
   data: () => ({
+    data: new Date(),
     regione: "kanto",
     muoriPezzoDiMerda: ["kanto", "johto", "hoenn", "culonia"],
   }),
+  computed: {
+    regioneMaiuscolo: function () {
+      return this.regione.toLocaleUpperCase();
+    },
+    regioneInvertito: function () {
+      let inverso = "";
+      for (let index = this.regione.length - 1; index >= 0; index--) {
+        const lettera = this.regione[index];
+        inverso = inverso + lettera;
+      }
+      return inverso;
+    },
+  },
   methods: {
     cambiaRegione: function (nuovaRegione) {
       this.regione = nuovaRegione;
